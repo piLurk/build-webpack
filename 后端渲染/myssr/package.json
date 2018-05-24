@@ -1,0 +1,17 @@
+{
+  "name": "myssr",
+  "version": "1.0.0",
+  "description": "my ssr test",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nuxt"
+  },
+  "keywords": [
+    "wudongyue"
+  ],
+  "author": "wudongyue",
+  "license": "ISC",
+  "dependencies": {
+    "nuxt": "^1.0.0"
+  }
+}

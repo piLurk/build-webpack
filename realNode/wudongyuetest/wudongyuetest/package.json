@@ -1,0 +1,14 @@
+{
+  "name": "wudongyuetest",
+  "version": "1.0.0",
+  "description": "this is my tet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ww15172317506"
+  ],
+  "author": "wudongyue",
+  "license": "ISC"
+}

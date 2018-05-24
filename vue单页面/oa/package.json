@@ -1,0 +1,28 @@
+{
+  "name": "oa",
+  "version": "1.0.0",
+  "description": "oa webpack-test vue ",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "oa",
+    "webpack-test",
+    "vue"
+  ],
+  "author": "wudongyue",
+  "license": "ISC",
+  "devDependencies": {
+    "config-lite": "^2.1.0",
+    "webpack": "^4.0.1",
+    "webpack-dev-server": "^3.1.0",
+    "webpack-merge": "^4.1.2"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "vue": "^2.5.13",
+    "vue-router": "^3.0.1",
+    "vue-server-renderer": "^2.5.13",
+    "vuex": "^3.0.1",
+    "vuex-router-sync": "^5.0.0"
+  }
+}

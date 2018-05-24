@@ -1,0 +1,29 @@
+{
+  "name": "oa",
+  "version": "1.0.0",
+  "description": "oa ssr build",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server"
+  },
+  "keywords": [
+    "oa",
+    "test",
+    "ssr"
+  ],
+  "author": "wudongyue",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "nuxt": "^1.3.0",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.3"
+  }
+}

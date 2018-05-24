@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>下载</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+	/>
+	<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+	<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+	<meta HTTP-EQUIV="Expires" CONTENT="0">
+	<meta HTTP-EQUIV="nocache" CONTENT="no-cache">
+	<style>
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			min-height: 100%;
+		}
+
+		body {
+			height: 100%;
+		}
+
+		* {
+			max-height: 100000px;
+		}
+
+		.btn-group-wrap {
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			top: 0;
+			margin: auto;
+			height: 140px;
+		}
+
+		.btn-wrap {
+			display: block;
+			margin: 0 auto 20px auto;
+			text-align: center;
+		}
+
+		.btn {
+			text-align: center;
+			text-decoration: none;
+			min-width: 130px;
+			font-size: 14px;
+			line-height: 35px;
+			height: 35px;
+			display: inline-block;
+			padding: 0 25px;
+			font-family: "Microsoft Yahei", Arial, sans-serif;
+			border-radius: 2px;
+		}
+
+		.btn.btn-round {
+			border-radius: 30px;
+		}
+
+		.btn.btn-blue {
+			background-color: #679fef;
+			color: #FFF;
+			border: 1px solid #679fef;
+			box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+		}
+
+		.btn.btn-blue:hover {
+			background-color: #477ccf;
+		}
+
+		.btn.btn-blue[disabled],
+		.btn.btn-blue[disabled]:hover {
+			background-color: #a0cfff;
+			border: 1px solid #a0cfff;
+
+		}
+	</style>
+</head>
+
+<body>
+	<div class="btn-group-wrap" id="btnGroupWrap" style="display: none;">
+		<div class="btn-wrap">
+			<a class="btn btn-round btn-blue" id="androidBtn" onclick="goto('android')" href="javascript:void(0);">Android 下载</a>
+		</div>
+		<div class="btn-wrap">
+			<!-- <a class="btn btn-round btn-blue" id="iOSBtn" onclick="goto('ios')" href="javascript:void(0);"> iOS 下载</a> -->
+			<a class="btn btn-round btn-blue" id="iOSBtn" href="javascript:void(0);" disabled> iOS 敬请期待</a>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	var host = 'https://app.jiangroom.com'
+	// var host = 'http://192.168.1.141:8087'
+	//androidUrl  iOSUrl
+	var androidUrl = 'http://jiangroom-app.oss-cn-hangzhou.aliyuncs.com/jiangRoom.apk';
+	var iOSUrl = 'https://itunes.apple.com/cn/app/koins-currency-converter/id1284589558?mt=8';
+
+	(function () {
+		"use strict";
+		//定义命名空间
+		window.neumedias = window.neumedias || {};
+
+		neumedias.platform = (function () {
+
+			var userAgent = window.navigator.userAgent;
+			var platform = window.navigator.platform;
+			var details = {};
+
+			// Windows
+			if (platform.match(/win32/gi)) {
+				details.os = 'windows';
+
+				// Windows XP
+				if (userAgent.match(/windows\s+nt\s+5\.1/gi)) {
+					details.type = 'desktop';
+					details.code = 'xp';
+					// Windows Vista
+				} else if (userAgent.match(/windows\s+nt\s+6\.0/gi)) {
+
+					details.type = 'desktop';
+					details.code = 'vista';
+
+					// Windows 7
+				} else if (userAgent.match(/windows\s+nt\s+6\.1/gi)) {
+
+					details.type = 'desktop';
+					details.code = '7';
+
+					// Windows 8
+				} else if (userAgent.match(/windows\s+nt\s+6\.2/gi)) {
+
+					details.type = 'desktop';
+					details.code = '8';
+
+					// Windows 8.1 Preview
+				} else if (userAgent.match(/windows\s+nt\s+6\.3/gi)) {
+
+					details.type = 'desktop';
+					details.code = '8.1';
+
+					// Windows Phone 7
+				} else if (userAgent.match(/windows\s+phone\s+7/gi)) {
+
+					details.type = 'phone';
+					details.code = '7';
+
+					// Windows Phone 8
+				} else if (userAgent.match(/windows\s+phone\s+8/gi)) {
+
+					details.type = 'phone';
+					details.code = '8';
+				}
+
+				// Mac OS X
+			} else if (platform.match(/macintel/gi)) {
+
+				details.os = 'macosx';
+
+				// iOS(iPhone)
+			} else if (platform.match(/iphone/gi)) {
+				details.os = 'ios';
+				details.type = 'phone';
+				details.code = '8';
+
+				// iOS(iPad)
+			} else if (platform.match(/ipad/gi)) {
+				details.os = 'ios';
+				details.type = 'tablet';
+				details.code = '8';
+
+				// Linux
+			} else if (platform.match(/linux/gi)) {
+				// Android
+				if (userAgent.match(/android/gi)) {
+
+					details.os = 'android';
+					details.type = 'mobile';
+
+					// Google Chrome OS
+				} else if (userAgent.match(/cros/gi)) {
+
+					details.os = 'chromeos';
+					details.type = 'desktop';
+
+					// Ubuntu
+				} else if (userAgent.match(/ubuntu/gi)) {
+
+					details.os = 'ubuntu';
+					details.type = 'desktop';
+
+					// Other Linux-like operating systems
+				} else {
+
+					details.os = 'android';
+					details.type = 'desktop';
+
+				}
+			}
+
+			return details;
+		})()
+
+		neumedias.isIOS = function () {
+			return neumedias.platform.os == 'ios';
+		};
+
+		neumedias.isAndroid = function () {
+			return neumedias.platform.os == 'android';
+		};
+
+		neumedias.isMobile = function () {
+			var platform = neumedias.platform;
+
+			return platform.type == 'mobile' || platform.type == 'phone' || platform.type == 'tablet';
+		};
+	})();
+	function afterGetPosition() {
+		if (neumedias.isIOS()) {
+			//todo 按钮打开--注释document ，打开window
+			// window.location.href = iOSUrl;
+			document.getElementById("btnGroupWrap").style.display = "";
+		} else if (neumedias.isAndroid()) {
+			window.location.href = androidUrl;
+		} else {
+			document.getElementById("btnGroupWrap").style.display = "";
+		}
+	}
+	function send(type, source, coord) {
+		var request = new XMLHttpRequest();
+		request.open('post', host + '/sign/app/saveDownloadRecord?'
+			+ 'appDownloadRecord.terminalType=' + type
+			+ '&appDownloadRecord.customerSource=' + source
+			+ '&appDownloadRecord.coordinateX=' + coord[0]
+			+ '&appDownloadRecord.coordinateY=' + coord[1]
+			+ '&appDownloadRecord.ipAddress=' + null
+			, true);
+		request.setRequestHeader('Access-Control-Allow-Origin', '*');
+
+		// request.timeout = 2000;
+
+		// request.onload = afterGetPosition;
+		// request.ontimeout = afterGetPosition;
+		// request.onerror = afterGetPosition;
+
+		request.send();
+	}
+
+	(function () {
+		var getSearchParams = function (url) {
+			var queryString = url || window.location.search;
+			var queryObject = {};
+
+			if (queryString.indexOf("?") > -1) {
+				queryString = queryString.substr(1);
+				var queryArray = queryString.split("&");
+				for (var i = 0, length = queryArray.length; i < length; i++) {
+					var string = queryArray[i];
+					var index = string.indexOf("=");
+					// 必须是合法的名值对
+					if (index > 0) {
+						var property = string.substr(0, index);
+						var value = string.substr(index + 1);
+						queryObject[property] = decodeURIComponent(value);
+					}
+				}
+			}
+			return queryObject;
+		};
+
+
+		function handleSuccess(position) {
+			send(neumedias.platform.os, getSearchParams()['source'] || 0, [position.coords.latitude, position.coords.longitude])
+			afterGetPosition()
+		}
+		function handleError() {
+			send(neumedias.platform.os, getSearchParams()['source'] || 0, [null, null])
+			afterGetPosition()
+		}
+
+		if (window.navigator.geolocation) {
+			var options = {
+				enableHighAccuracy: true,
+				timeout: 1500
+			};
+			try {
+				window.navigator.geolocation.getCurrentPosition(handleSuccess, handleError, options);
+			} catch (error) {
+				handleError()
+			}
+		} else {
+			handleError()
+		}
+
+
+		function goto(flag) {
+			switch (flag) {
+				case 'ios':
+					if (iOSUrl) {
+						window.location.href = iOSUrl;
+					}
+					break;
+
+				case 'android':
+					if (androidUrl) {
+						window.location.href = androidUrl;
+					}
+					break;
+				default:
+			}
+		}
+
+		window.goto = goto;
+	})();
+</script>
+
+</html>
