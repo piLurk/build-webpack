@@ -1,0 +1,9 @@
+.tableBox .modtable{width:100%;border-collapse: collapse;}
+.tableBox .modtable td,.tableBox .modtable th{background-color: #fff;font-size: 14px;vertical-align: middle;text-align: left;height: 40px; padding-left: 10px;}
+.tableBox .modtable tr:hover>td {background-color: #f6f7f9;}
+.tableBox .modtable th {font-size: 14px;background-color: #f6f8f8;border-bottom: 2px solid #e2e5e5;color: #a3b2c6;font-weight: 500;}
+.tableBox .modtable .children > td { padding-left: 0; }
+.tableBox .modtable .children table th{
+  background-color: #ecf4ff;
+  color: #a3b2c6;
+}
